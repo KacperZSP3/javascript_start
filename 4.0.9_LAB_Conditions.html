@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista kontaktów</title>
+  <script>
+    let contacts = [{
+      name: "Maxwell Wright",
+      phone: "(0191) 719 6495",
+      email: "Curabitur.egestas.nunc@nonummyac.co.uk"
+    }, {
+      name: "Raja Villarreal",
+      phone: "0866 398 2895",
+      email: "posuere.vulputate@sed.com"
+    }, {
+      name: "Helen Richards",
+      phone: "0800 1111",
+      email: "libero@convallis.edu"
+    }];
+
+    function manageContacts() {
+      let action;
+      do {
+        action = prompt("Co chcesz zrobić? Wybierz: 'first' (wyświetl pierwszy kontakt), 'last' (wyświetl ostatni kontakt), 'new' (dodaj nowy kontakt), 'exit' (zakończ):");
+
+        // Zabezpieczenie przed null, gdy użytkownik anuluje prompt
+        if (action === null) {
+          console.log("Anulowano wybór. Program zakończony.");
+          break;
+        }
+
+        console.log("Wybrano akcję:", action);
+
+        switch (action.trim().toLowerCase()) { // Dodano trim i toLowerCase do walidacji inputu
+          case 'first':
+            if (contacts.length > 0) {
+              console.log(`Pierwszy kontakt: ${contacts[0].name} / ${contacts[0].phone} / ${contacts[0].email}`);
+            } else {
+              console.log("Lista kontaktów jest pusta.");
+            }
+            break;
+
+          case 'last':
+            if (contacts.length > 0) {
+              console.log(`Ostatni kontakt: ${contacts[contacts.length - 1].name} / ${contacts[contacts.length - 1].phone} / ${contacts[contacts.length - 1].email}`);
+            } else {
+              console.log("Lista kontaktów jest pusta.");
+            }
+            break;
+
+          case 'new':
+            let newName = prompt("Podaj imię nowego kontaktu:");
+            let newPhone = prompt("Podaj numer telefonu nowego kontaktu:");
+            let newEmail = prompt("Podaj adres email nowego kontaktu:");
+
+            if (newName && newPhone && newEmail) {
+              contacts.push({name: newName, phone: newPhone, email: newEmail});
+              console.log("Nowy kontakt został dodany:", contacts[contacts.length - 1]);
+            } else {
+              console.log("Nie dodano kontaktu. Upewnij się, że wprowadziłeś wszystkie dane (imię, telefon i email).");
+            }
+            break;
+
+          case 'exit':
+            console.log("Zakończono działanie programu.");
+            break;
+
+          default:
+            console.log("Nieznana opcja. Wybierz 'first', 'last', 'new' lub 'exit'.");
+            break;
+        }
+      } while (action !== 'exit' && action !== null);
+    }
+
+    // Wywołanie funkcji zarządzającej kontaktami
+    manageContacts();
+  </script>
+</head>
+<body>
+<h1>Lista kontaktów</h1>
+<p>Otwórz konsolę, aby zobaczyć wyniki.</p>
+</body>
+</html>
