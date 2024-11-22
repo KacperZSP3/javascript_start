@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Range</title>
+</head>
+<body>
+<script>
+  let upperLimit = Number(prompt("Enter upper limit"));
+  let lowerLimit = Number(prompt("Enter lower limit"));
+
+  if (!Number.isNaN(upperLimit) && !Number.isNaN(lowerLimit) && upperLimit > lowerLimit) {
+    for (let i = upperLimit; i >= lowerLimit; i -= 10) { // Dodano 'let'
+      console.log(i);
+    }
+  }
+</script>
+</body>
+</html>
